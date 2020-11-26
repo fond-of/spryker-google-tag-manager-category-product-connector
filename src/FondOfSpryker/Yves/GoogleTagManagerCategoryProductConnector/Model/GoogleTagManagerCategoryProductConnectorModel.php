@@ -7,8 +7,14 @@ use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;
 
 class GoogleTagManagerCategoryProductConnectorModel implements GoogleTagManagerCategoryProductConnectorModelInterface
 {
+    /**
+     * @var \Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface
+     */
     protected $moneyPlugin;
 
+    /**
+     * @param \Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface
+     */
     public function __construct(MoneyPluginInterface $moneyPlugin)
     {
         $this->moneyPlugin = $moneyPlugin;
