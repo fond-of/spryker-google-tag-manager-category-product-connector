@@ -84,8 +84,6 @@ class GoogleTagManagerCategoryProductConnectorModel implements GoogleTagManagerC
 
         $sku = str_replace('ABSTRACT-', '', strtoupper($params[ModuleConstants::PARAM_PRODUCT_ABSTRACT_SKU]));
 
-        return [
-            ModuleConstants::FIELD_SKU => $sku,
-        ];
+        return [ModuleConstants::FIELD_SKU => $sku];
     }
 }
