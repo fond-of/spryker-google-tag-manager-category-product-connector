@@ -3,8 +3,8 @@
 namespace FondOfSpryker\Yves\GoogleTagManagerCategoryProductConnector\Model;
 
 use Codeception\Test\Unit;
-use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;
 use FondOfSpryker\Shared\GoogleTagManagerCategoryProductConnector\GoogleTagManagerCategoryProductConnectorConstants as ModuleConstants;
+use Spryker\Shared\Money\Dependency\Plugin\MoneyPluginInterface;
 
 class GoogleTagManagerCategoryProductConnectorModelTest extends Unit
 {
@@ -36,7 +36,7 @@ class GoogleTagManagerCategoryProductConnectorModelTest extends Unit
     public function testGetIdProductAbstract(): void
     {
         $result = $this->model->getIdProductAbstract([
-            ModuleConstants::PARAM_PRODUCT_ID_ABSTRACT => 'ABSTRACT-ID'
+            ModuleConstants::PARAM_PRODUCT_ID_ABSTRACT => 'ABSTRACT-ID',
         ]);
 
         $this->assertArrayHasKey(ModuleConstants::FIELD_PRODUCT_ID_ABSTRACT, $result);
@@ -53,7 +53,7 @@ class GoogleTagManagerCategoryProductConnectorModelTest extends Unit
             ->willReturn(69.00);
 
         $result = $this->model->getProductPrice([
-            ModuleConstants::PARAM_PRODUCT_PRICE => 6990
+            ModuleConstants::PARAM_PRODUCT_PRICE => 6990,
         ]);
 
         $this->assertArrayHasKey(ModuleConstants::FIELD_PRICE, $result);
@@ -64,9 +64,10 @@ class GoogleTagManagerCategoryProductConnectorModelTest extends Unit
      */
     public function testGetProductName(): void
     {
-        $result = $this->model->getProductName([ModuleConstants::PARAM_PRODUCT_ATTRIBUTES => [
+        $result = $this->model->getProductName([
+        ModuleConstants::PARAM_PRODUCT_ATTRIBUTES => [
             ModuleConstants::PARAM_PRODUCT_ATTRIBUTE_NAME_UNTRANSLATED => 'NAME_UNTRANSLATED',
-            ModuleConstants::PARAM_PRODUCT_ATTRIBUTE_ABSTRACT_NAME => 'NAME'
+            ModuleConstants::PARAM_PRODUCT_ATTRIBUTE_ABSTRACT_NAME => 'NAME',
         ]]);
 
         $this->assertArrayHasKey(ModuleConstants::FIELD_PRODUCT_NAME, $result);
@@ -78,7 +79,7 @@ class GoogleTagManagerCategoryProductConnectorModelTest extends Unit
     public function testGetProductSku(): void
     {
         $result = $this->model->getProductName([
-            ModuleConstants::PARAM_PRODUCT_ABSTRACT_SKU => 'ABSTRACT_SKU'
+            ModuleConstants::PARAM_PRODUCT_ABSTRACT_SKU => 'ABSTRACT_SKU',
         ]);
 
         $this->assertArrayHasKey(ModuleConstants::FIELD_SKU, $result);
