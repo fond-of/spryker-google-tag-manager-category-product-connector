@@ -35,7 +35,7 @@ class GoogleTagManagerCategoryProductIdAbstractPluginTest extends Unit
         $googleTagManagerCategoryProductIdAbstractPlugin = new GoogleTagManagerCategoryProductIdAbstractPlugin();
         $googleTagManagerCategoryProductIdAbstractPlugin->setFactory($factoryMock);
 
-        $result = $googleTagManagerCategoryProductIdAbstractPlugin->addVariable('pageType', $params);
+        $result = $googleTagManagerCategoryProductIdAbstractPlugin->expand('pageType', $params);
 
         $this->assertIsArray($result);
         $this->assertArrayHasKey(ModuleConstants::FIELD_PRODUCT_ID_ABSTRACT, $result);

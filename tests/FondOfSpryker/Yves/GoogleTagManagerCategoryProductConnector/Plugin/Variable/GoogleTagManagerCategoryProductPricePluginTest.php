@@ -35,7 +35,7 @@ class GoogleTagManagerCategoryProductPricePluginTest extends Unit
         $googleTagManagerCategoryProductPricePlugin = new GoogleTagManagerCategoryProductPricePlugin();
         $googleTagManagerCategoryProductPricePlugin->setFactory($factoryMock);
 
-        $result = $googleTagManagerCategoryProductPricePlugin->addVariable('pageType', $params);
+        $result = $googleTagManagerCategoryProductPricePlugin->expand('pageType', $params);
 
         $this->assertIsArray($result);
         $this->assertArrayHasKey(ModuleConstants::FIELD_PRICE, $result);
