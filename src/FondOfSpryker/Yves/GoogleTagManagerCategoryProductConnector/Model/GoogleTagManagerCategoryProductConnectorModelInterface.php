@@ -9,26 +9,26 @@ interface GoogleTagManagerCategoryProductConnectorModelInterface
      *
      * @return array
      */
-    public function getIdProductAbstract(array $params): array;
+    public function getIdProductAbstract(string $page, array $twigVariableBag, array $variableList): array;
 
     /**
      * @param array $params
      *
      * @return array
      */
-    public function getProductPrice(array $params): array;
+    public function getProductPrice(string $page, array $twigVariableBag, array $variableList): array;
 
     /**
      * @param array $params
      *
      * @return array
      */
-    public function getProductName(array $params): array;
+    public function getProductName(string $page, array $twigVariableBag, array $variableList): array;
 
     /**
      * @param array $params
      *
      * @return array
      */
-    public function getProductSku(array $params): array;
+    public function getProductSku(string $page, array $twigVariableBag, array $variableList): array;
 }

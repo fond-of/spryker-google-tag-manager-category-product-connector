@@ -35,7 +35,7 @@ class GoogleTagManagerCategoryProductSkuPluginTest extends Unit
         $googleTagManagerCategoryProductSkuPlugin = new GoogleTagManagerCategoryProductSkuPlugin();
         $googleTagManagerCategoryProductSkuPlugin->setFactory($factoryMock);
 
-        $result = $googleTagManagerCategoryProductSkuPlugin->addVariable('pageType', $params);
+        $result = $googleTagManagerCategoryProductSkuPlugin->expand('pageType', $params);
 
         $this->assertIsArray($result);
         $this->assertArrayHasKey(ModuleConstants::FIELD_SKU, $result);

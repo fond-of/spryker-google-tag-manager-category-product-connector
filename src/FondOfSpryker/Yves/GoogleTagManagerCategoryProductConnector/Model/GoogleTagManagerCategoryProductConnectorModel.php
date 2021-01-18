@@ -21,75 +21,83 @@ class GoogleTagManagerCategoryProductConnectorModel implements GoogleTagManagerC
     }
 
     /**
-     * @param array $params
+     * @param string $page
+     * @param array $twigVariableBag
+     * @param array $variableList
      *
      * @return array
      */
-    public function getIdProductAbstract(array $params): array
+    public function getIdProductAbstract(string $page, array $twigVariableBag, array $variableList): array
     {
-        if (!isset($params[ModuleConstants::PARAM_PRODUCT_ID_ABSTRACT])) {
-            return [];
+        if (!isset($twigVariableBag[ModuleConstants::PARAM_PRODUCT_ID_ABSTRACT])) {
+            return $variableList;
         }
 
-        return [
-            ModuleConstants::FIELD_PRODUCT_ID_ABSTRACT => $params[ModuleConstants::PARAM_PRODUCT_ID_ABSTRACT],
-        ];
+        $variableList[ModuleConstants::FIELD_PRODUCT_ID_ABSTRACT] = $twigVariableBag[ModuleConstants::PARAM_PRODUCT_ID_ABSTRACT];
+
+        return $variableList;
     }
 
     /**
-     * @param array $params
+     * @param string $page
+     * @param array $twigVariableBag
+     * @param array $variableList
      *
      * @return array
      */
-    public function getProductPrice(array $params): array
+    public function getProductPrice(string $page, array $twigVariableBag, array $variableList): array
     {
-        if (!isset($params[ModuleConstants::PARAM_PRODUCT_PRICE])) {
-            return [];
+        if (!isset($twigVariableBag[ModuleConstants::PARAM_PRODUCT_PRICE])) {
+            return $variableList;
         }
 
-        $priceInt = $params[ModuleConstants::PARAM_PRODUCT_PRICE];
+        $priceInt = $twigVariableBag[ModuleConstants::PARAM_PRODUCT_PRICE];
+        $variableList[ModuleConstants::FIELD_PRICE] = $this->moneyPlugin->convertIntegerToDecimal($priceInt);
 
-        return [
-            ModuleConstants::FIELD_PRICE => $this->moneyPlugin
-                ->convertIntegerToDecimal($priceInt),
-        ];
+        return $variableList;
     }
 
     /**
-     * @param array $params
+     * @param string $page
+     * @param array $twigVariableBag
+     * @param array $variableList
      *
      * @return array
      */
-    public function getProductName(array $params): array
+    public function getProductName(string $page, array $twigVariableBag, array $variableList): array
     {
-        if (!isset($params[ModuleConstants::PARAM_PRODUCT_ATTRIBUTES])) {
-            return [];
+        if (!isset($twigVariableBag[ModuleConstants::PARAM_PRODUCT_ATTRIBUTES])) {
+            return $variableList;
         }
 
-        $attributes = $params[ModuleConstants::PARAM_PRODUCT_ATTRIBUTES];
+        $attributes = $twigVariableBag[ModuleConstants::PARAM_PRODUCT_ATTRIBUTES];
 
         $name = isset($attributes[ModuleConstants::PARAM_PRODUCT_ATTRIBUTE_NAME_UNTRANSLATED])
             ? $attributes[ModuleConstants::PARAM_PRODUCT_ATTRIBUTE_NAME_UNTRANSLATED]
             : $attributes[ModuleConstants::PARAM_PRODUCT_ATTRIBUTE_ABSTRACT_NAME];
 
-        return [
-            ModuleConstants::FIELD_PRODUCT_NAME => $name,
-        ];
+        $variableList[ModuleConstants::FIELD_PRODUCT_NAME] = $name;
+
+        return $variableList;
     }
 
     /**
-     * @param array $params
+     * @param string $page
+     * @param array $twigVariableBag
+     * @param array $variableList
      *
      * @return array
      */
-    public function getProductSku(array $params): array
+    public function getProductSku(string $page, array $twigVariableBag, array $variableList): array
     {
-        if (!isset($params[ModuleConstants::PARAM_PRODUCT_ABSTRACT_SKU])) {
-            return [];
+        if (!isset($twigVariableBag[ModuleConstants::PARAM_PRODUCT_ABSTRACT_SKU])) {
+            return $variableList;
         }
 
-        $sku = str_replace('ABSTRACT-', '', strtoupper($params[ModuleConstants::PARAM_PRODUCT_ABSTRACT_SKU]));
+        $sku = str_replace('ABSTRACT-', '', strtoupper($twigVariableBag[ModuleConstants::PARAM_PRODUCT_ABSTRACT_SKU]));
 
-        return [ModuleConstants::FIELD_SKU => $sku];
+        $variableList[ModuleConstants::FIELD_SKU] = $sku;
+
+        return $variableList;
     }
 }
